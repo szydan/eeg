@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tests</title>
+  <script type="text/javascript" src="../node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../node_modules/d3/d3.min.js"></script>
+
+  <link  href="../lib/css/eg.css" type="text/css" rel="stylesheet" />
+  <script src="../lib/js/eg.js"   type="text/javascript" ></script>
+
+  <style type="text/css">
+    .example{
+       width:400px; height:300px; border:1px #dedede solid; float: left;
+    }
+    .error{ border:1px red solid; }
+
+  </style>
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+  var node1 = {id:"Article",label:"Article",nodeType:"Article"};
+  var node2 = {id:"Company",label:"Company",nodeType:"Company"};
+  var node3 = {id:"Investment",label:"Investment",nodeType:"Investmet"};
+  var node4 = {id:"Investor",label:"Investor",nodeType:"Investor"};
+
+
+
+
+  var nodeS1 = {id:"Centre",label:"Centre",nodeType:"CentreNode"};
+
+  var nodeS2 = {id:"Satelite2",label:"Satelite",nodeType:"SateliteNode"};
+  var nodeS3 = {id:"Satelite3",label:"Satelite",nodeType:"SateliteNode"};
+  var nodeS4 = {id:"Satelite4",label:"Satelite",nodeType:"SateliteNode"};
+  var nodeS5 = {id:"Satelite5",label:"Satelite",nodeType:"SateliteNode"};
+  var nodeS6 = {id:"Satelite6",label:"Satelite",nodeType:"SateliteNode"};
+  var nodeS7 = {id:"Satelite7",label:"Satelite",nodeType:"SateliteNode"};
+  var nodeS8 = {id:"Satelite8",label:"Satelite",nodeType:"SateliteNode"};
+  var nodeS9 = {id:"Satelite9",label:"Satelite",nodeType:"SateliteNode"};
+
+
+
+  var g15 = new Eg("#g15",{
+    title:"star like strucure - all links out"
+  });
+  g15.addNodes(nodeS1,nodeS2,nodeS3,nodeS4,nodeS5,nodeS6,nodeS7,nodeS8,nodeS9);
+  g15.addLink({source:nodeS1,target:nodeS2,linkType:"link"});
+  g15.addLink({source:nodeS1,target:nodeS3,linkType:"link"});
+  g15.addLink({source:nodeS1,target:nodeS4,linkType:"link"});
+  g15.addLink({source:nodeS1,target:nodeS5,linkType:"link"});
+  g15.addLink({source:nodeS1,target:nodeS6,linkType:"link"});
+  g15.addLink({source:nodeS1,target:nodeS7,linkType:"link"});
+  g15.addLink({source:nodeS1,target:nodeS8,linkType:"link"});
+  g15.addLink({source:nodeS1,target:nodeS9,linkType:"link"});
+
+  var g16 = new Eg("#g16",{
+    title:"star like strucure - all links in"
+  });
+  g16.addNodes(nodeS1,nodeS2,nodeS3,nodeS4,nodeS5,nodeS6,nodeS7,nodeS8,nodeS9);
+
+  g16.addLink({source:nodeS2,target:nodeS1,linkType:"link"});
+  g16.addLink({source:nodeS3,target:nodeS1,linkType:"link"});
+  g16.addLink({source:nodeS4,target:nodeS1,linkType:"link"});
+  g16.addLink({source:nodeS5,target:nodeS1,linkType:"link"});
+  g16.addLink({source:nodeS6,target:nodeS1,linkType:"link"});
+  g16.addLink({source:nodeS7,target:nodeS1,linkType:"link"});
+  g16.addLink({source:nodeS8,target:nodeS1,linkType:"link"});
+  g16.addLink({source:nodeS9,target:nodeS1,linkType:"link"});
+
+
+  var g13 = new Eg("#g13",{
+    title:"self reference - single link"
+  });
+  g13.addNodes(node1);
+  g13.addLink({source:node1,target:node1,linkType:"first"});
+
+  var g6 = new Eg("#g6",{
+    title:"self reference - multiple links"
+  });
+  g6.addNodes(node1,node2);
+  g6.addLink({source:node1,target:node1,linkType:"first"});
+  g6.addLink({source:node1,target:node1,linkType:"second"});
+  g6.addLink({source:node1,target:node1,linkType:"third"});
+  g6.addLink({source:node1,target:node1,linkType:"forth"});
+  g6.addLink({source:node1,target:node2,linkType:"external"});
+
+
+  var node1Icon = {id:"Investor1",label:"Investor",nodeType:"Person",size:50};
+  var node2Icon = {id:"Investor2",label:"Investor",nodeType:"Person",size:40};
+  var node3Icon = {id:"Investor3",label:"Investor",nodeType:"Person",size:30};
+
+  var g14 = new Eg("#g14",{
+    title:"self reference - single link with icon",
+    nodeIcons:{
+      "Person":"person.png",
+    }
+  });
+  g14.addNodes(node1Icon,node2Icon,node3Icon);
+
+  g14.addLink({source:node1Icon,target:node1Icon,linkType:"first"});
+  g14.addLink({source:node2Icon,target:node2Icon,linkType:"first"});
+  g14.addLink({source:node3Icon,target:node3Icon,linkType:"first"});
+
+  g14.addLink({source:node1Icon,target:node2Icon,linkType:"first"});
+  g14.addLink({source:node2Icon,target:node3Icon,linkType:"first"});
+
+
+  var g0 = new Eg("#g0",{
+    title:"1 link"
+  });
+  g0.addNodes(node1,node2);
+  g0.addLink({source:node1,target:node2,linkType:"refersTo"});
+
+
+  var g1 = new Eg("#g1",{
+    title:"3 links - same directions"
+  });
+  g1.addNodes(node1,node2);
+  g1.addLink({source:node1,target:node2,linkType:"refersTo"});
+  g1.addLink({source:node1,target:node2,linkType:"refersTo"});
+  g1.addLink({source:node1,target:node2,linkType:"refersTo"});
+
+
+
+  var g8 = new Eg("#g8",{
+    title:"3 links - oposite directions"
+  });
+  g8.addNodes(node1,node2);
+  g8.addLink({source:node1,target:node2,linkType:"refersTo"});
+  g8.addLink({source:node2,target:node1,linkType:"refersTo"});
+  g8.addLink({source:node1,target:node2,linkType:"refersTo"});
+
+
+  var g2 = new Eg("#g2",{
+    title:"2 links - same directions"
+  });
+  g2.addNodes(node1,node2);
+  g2.addLink({source:node1,target:node2,linkType:"refersTo"});
+  g2.addLink({source:node1,target:node2,linkType:"refersTo"});
+
+
+  var g3 = new Eg("#g3",{
+    title:"2 links - opposite directions"
+  });
+  g3.addNodes(node1,node2);
+  g3.addLink({source:node1,target:node2,linkType:"refersTo"});
+  g3.addLink({source:node2,target:node1,linkType:"refersTo"});
+
+  var g4 = new Eg("#g4",{
+    title:"4 links - same directions"
+  });
+  g4.addNodes(node1,node2);
+  g4.addLink({source:node1,target:node2,linkType:"refersTo"});
+  g4.addLink({source:node1,target:node2,linkType:"refersTo"});
+  g4.addLink({source:node1,target:node2,linkType:"refersTo"});
+  g4.addLink({source:node1,target:node2,linkType:"refersTo"});
+
+  var g5 = new Eg("#g5",{
+    title:"5 links - same directions"
+  });
+  g5.addNodes(node1,node2);
+  g5.addLink({source:node1,target:node2,linkType:"refersTo"});
+  g5.addLink({source:node1,target:node2,linkType:"refersTo"});
+  g5.addLink({source:node1,target:node2,linkType:"refersTo"});
+  g5.addLink({source:node1,target:node2,linkType:"refersTo"});
+  g5.addLink({source:node1,target:node2,linkType:"refersTo"});
+
+
+
+  var g7 = new Eg("#g7",{
+    title:"dynamic scaling to container size, require jquery resize plugin, resize window to verify"
+  });
+  g7.addNodes(node1,node2,node3,node4);
+  g7.addLink({source:node1,target:node2,linkType:"refersTo"});
+
+
+
+  var g9 = new Eg("#g9",{
+    title:"dynamic scaling to container size, require jquery resize plugin, resize window to verify",
+    monitorContainerSize:true
+  });
+  g9.addNodes(node1,node2,node3,node4);
+  g9.addLink({source:node1,target:node2,linkType:"refersTo"});
+
+
+  var g10 = new Eg("#g10",{
+    title:"dynamic scaling to container size, require jquery resize plugin, resize window to verify",
+    monitorContainerSize:true
+  });
+  g10.addNodes(node1,node2,node3,node4);
+  g10.addLink({source:node1,target:node2,linkType:"refersTo"});
+
+
+  var loop = function(id,minW,minH,maxW,maxH){
+    $(id).animate({width:minW,height:minH},1000,function(){
+      //wait a 2 sec
+      setTimeout(function(){
+        $(id).animate({width:maxW,height:maxH},1000,function(){
+          // wait a 2 sec
+          setTimeout(function(){
+            loop(id,minW,minH,maxW,maxH);
+          },2000);
+        });
+      },2000);
+    })
+  }
+
+  //loop("#g9", 200,200, $("#g9").width(),$("#g9").height() );
+  //loop("#g10",$("#g10").width(),$("#g10").height(),200,200 );
+
+  var node5 = {id:"BigInvestor",label:"Big Investor",nodeType:"Investor",size:40};
+  var node6 = {id:"BiggerInvestor",label:"Bigger Investor",nodeType:"Investor",size:60};
+  var node7 = {id:"SmallInvestor",label:"Small Investor",nodeType:"Investor",size:15};
+
+  var g11 = new Eg("#g11",{
+    title:"different node sizes"
+  });
+  g11.addNodes(node5, node6, node7);
+  g11.addLink({source:node5,target:node6,linkType:"test"});
+  g11.addLink({source:node6,target:node7,linkType:"test"});
+  g11.addLink({source:node7,target:node5,linkType:"test"});
+
+
+
+  var node8 =  {id:"BigInvestor",label:"Big Investor",nodeType:"Person",size:80};
+  var node9 =  {id:"CompanyA",label:"Company A",nodeType:"Company", size:50};
+  var node10 = {id:"palcex",label:"Place A",nodeType:"Place" , size:30};
+  var node11 = {id:"palcey",label:"Place B" ,nodeType:"Place" , size:30};
+  var node12 = {id:"unknownNode",label:"Unknown",nodeType:"Unknown" , size:10};
+
+
+  var g12 = new Eg("#g12",{
+    title:"nodes as icons",
+    nodeIcons:{
+      "Person":"person.png",
+      "Place":"place.png",
+      "Company":"organization.png",
+      "Unknown":"http://placehold.it/48x48"
+    }
+  });
+
+  g12.addNodes(node8, node9, node10, node11);
+
+  g12.addLink({source:node8 ,target:node9, linkType:"test"});
+  g12.addLink({source:node9 ,target:node10,linkType:"test"});
+  g12.addLink({source:node9,target:node11,linkType:"test"});
+
+
+
+  var bigNode1 =  {id:"b1",label:"Big Investor",nodeType:"Person",  size:80};
+  var bigNode2 =  {id:"b2",label:"Company A",   nodeType:"Company", size:80};
+  var bigNode3 =  {id:"b3",label:"Company small",   nodeType:"Company", size:10};
+
+  var g17 = new Eg("#g17",{
+    title:"big nodes - multiple links",
+    nodeIcons:{
+      "Person":"person.png",
+      "Company":"organization.png"
+    }
+  });
+
+  g17.addNodes(bigNode1,bigNode2,bigNode3);
+
+  g17.addLink({source:bigNode1 ,target:bigNode2, linkType:"test"});
+  g17.addLink({source:bigNode2 ,target:bigNode1, linkType:"test"});
+  g17.addLink({source:bigNode1 ,target:bigNode3, linkType:"test"});
+
+
+
+
+  var node18_A =  {id:"b1",label:"Big Investor",nodeType:"Person",  size:80};
+  var node18_B =  {id:"b2",label:"Company A",   nodeType:"Company", size:20};
+
+  var g18 = new Eg("#g18",{
+    title:"different link sizes",
+    nodeIcons:{
+      "Person":"person.png",
+      "Company":"organization.png"
+    }
+  });
+
+  g18.addNodes(node18_A,node18_B);
+
+  g18.addLink({source:node18_A ,target:node18_B, linkType:"test-30",size:30});
+  g18.addLink({source:node18_A ,target:node18_B, linkType:"test-20",size:20});
+  g18.addLink({source:node18_A ,target:node18_B, linkType:"test-15",size:15});
+  g18.addLink({source:node18_A ,target:node18_B, linkType:"test-10",size:10});
+
+
+
+  var g19 = new Eg("#g19",{
+    title:"replace nodes"
+  });
+
+  var node19_A =  {id:"a",label:"A",nodeType:"Person", size:80};
+  var node19_B =  {id:"b",label:"B",nodeType:"Person", size:80};
+  var node19_C =  {id:"c",label:"C",nodeType:"Person", size:80};
+  var node19_D =  {id:"d",label:"D",nodeType:"Person", size:20};
+  var node19_E =  {id:"e",label:"E",nodeType:"Person", size:20};
+
+  // so first add A B C
+  g19.replaceNodes(node19_A,node19_B,node19_C);
+  // add some links between the A and B and C
+  g19.addLink({source:node19_A,target:node19_B,linkType:"test"});
+  g19.addLink({source:node19_B,target:node19_C,linkType:"test"});
+
+
+  // then call replace with C D E
+  setTimeout(function(){
+    g19.replaceNodes(node19_C,node19_D,node19_E);
+    // add new links
+    g19.addLink({source:node19_C,target:node19_D,linkType:"test"});
+    g19.addLink({source:node19_C,target:node19_E,linkType:"test"});
+
+  },2000);
+  // at the end you should see C D E
+
+
+
+
+  var test8 =  {id:"ArticleId",label:"Article",nodeType:"Article",size:12};
+  var test9 =  {id:"CompanyId",label:"Company",nodeType:"Company",size:12};
+
+  var test8a =  {id:"ArticleIdA",label:"ArticleA",nodeType:"Article",size:12};
+  var test9a =  {id:"CompanyIdA",label:"CompanyA",nodeType:"Company",size:12};
+
+  var test10 = {id:"InvestorId",label:"Investor",nodeType:"Investor",size:12};
+  var test11 = {id:"InvestmentId",label:"Investment" ,nodeType:"Investment",size:12};
+
+  var gTest = new Eg("#test",{
+    title:"nodes as icons"
+  });
+
+
+
+  gTest.addNodes(test8a,test9a,test8,test9,test10,test11);
+
+
+
+  gTest.addLink({source:test8,target:test9,linkType:"test"});
+  gTest.addLink({source:test9,target:test10,linkType:"test"});
+  gTest.addLink({source:test10,target:test11,linkType:"test"});
+
+  gTest.addLink({source:test8,target:test9a,linkType:"test"});
+  gTest.addLink({source:test8a,target:test9a,linkType:"test"});
+
+
+  gTest.removeNode("CompanyId");
+  gTest.removeNode("CompanyIdA");
+  /*
+  console.log( isThisNodeReachableFrom(gTest,"ArticleId","Investor") );
+  console.log( isThisNodeReachableFrom(gTest,"ArticleId","Company") );
+  console.log( isThisNodeReachableFrom(gTest,"ArticleId","Investment") );
+
+  console.log( isThisNodeReachableFrom(gTest,"ArticleId", ["Investor","Company"] ) );
+
+  console.log( isThisNodeReachableFrom(gTest,"CompanyIdA", ["Article,Company,Investor","Investment"] ) );
+  */
+
+
+});
+</script>
+
+</head>
+<body>
+  <h1>Eg tests</h1>
+
+  <div id="g19" class="example"></div>
+
+
+  <div id="g18" class="example"></div>
+
+
+  <div id="g17" class="example"></div>
+
+  <div id="g13" class="example"></div>
+  <div id="g6" class="example"></div>
+  <div id="g14" class="example"></div>
+
+
+  <div id="g15" class="example"></div>
+  <div id="g16" class="example"></div>
+
+
+  <div id="g12" class="example"></div>
+  <div id="g11" class="example"></div>
+
+
+
+
+  <div id="g0" class="example"></div>
+  <div id="g2" class="example"></div>
+  <div id="g3" class="example"></div>
+
+  <div id="g1" class="example"></div>
+  <div id="g8" class="example"></div>
+
+  <div id="g4" class="example"></div>
+  <div id="g5" class="example"></div>
+
+
+  <div id="test" class="example"></div>
+
+  <!-- resize demo -->
+  <div id="g7" class="example" style="width:100%; clear:both;"></div>
+
+  <div style="clear:both;"></div>
+
+
+  <div style="width:800px; height:300px;">
+    <div id="g9" class="example" style="width:100%; height:100%; border:1px red solid;"></div>
+  </div>
+  <div style="width:800px; height:300px;">
+    <div id="g10" class="example" style="width:100%; height:100%; border:1px red solid;"></div>
+  </div>
+
+</body>
+</html>
