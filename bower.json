@@ -1,0 +1,26 @@
+{
+  "name": "eeg",
+  "version": "1.0.0",
+  "homepage": "https://github.com/szydan/eg",
+  "authors": [
+    "Szymon Danielczyk <danielczyk.szymon@gmail.com>"
+  ],
+  "description": "Easy easy graph",
+  "main": "lib/js/eg.js",
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "keywords": [
+    "easy",
+    "graph"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

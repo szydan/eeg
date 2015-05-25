@@ -1,0 +1,30 @@
+{
+  "name": "eeg",
+  "version": "1.0.0",
+  "description": "easy easy graph",
+  "main": "lib/js/eeg.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/szydan/eeg.git"
+  },
+  "keywords": [
+    "easy",
+    "graph",
+    "force",
+    "directed"
+  ],
+  "author": "Szymon Danielczyk <danielczyk.szymon@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/szydan/eeg/issues"
+  },
+  "homepage": "https://github.com/szydan/eeg",
+
+  "dependencies": {
+    "jquery": "1.11.3",
+    "d3": "3.5.5"
+  }
+}
