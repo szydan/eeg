@@ -22,9 +22,12 @@
     "url": "https://github.com/szydan/eeg/issues"
   },
   "homepage": "https://github.com/szydan/eeg",
-
   "dependencies": {
     "jquery": "1.11.3",
     "d3": "3.5.5"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-jshint": "^0.11.2"
   }
 }
