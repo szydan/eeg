@@ -7,7 +7,7 @@ test( "shortest path test for schema graph for 'wkd' dataset", function() {
 	var courtNode    = {id:"Court0",   label:"Court",   nodeType:"Court"};
 
 
-	var g0 = new Eg("#g0",{
+	var g0 = new Eeg("#g0",{
 		title:"shortest path test - wkd dataset"
 	});
 
@@ -43,7 +43,7 @@ test( "shortest path test for schema graph for 'acii' dataset", function() {
 	var investorNode  = {id:"Investor0",  label:"Investor0",   nodeType:"Investor"};
 
 
-	var g1 = new Eg("#g1",{
+	var g1 = new Eeg("#g1",{
 		title:"shortest path test - acii dataset"
 	});
 
@@ -91,7 +91,7 @@ test( "shortest path test for schema graph for 'okk' dataset", function() {
 	var fabbricatoNode   = {id:"Fabbricato0",   label:"Fabbricato0",    nodeType:"Fabbricato"};
 	var titolaritaFabbricatNode   = {id:"TitolaritaFabbricat0",   label:"TitolaritaFabbricat0",    nodeType:"TitolaritaFabbricat"};
 
-	var g2 = new Eg("#g2",{
+	var g2 = new Eeg("#g2",{
 		title:"shortest path test - okk dataset"
 	});
 
@@ -146,7 +146,7 @@ test( "shortest path test for data graph for 'acii' dataset", function() {
 	var investorNode  = {id:"Investor0",  label:"Investor0",   nodeType:"Investor"};
 
 
-	var g1 = new Eg("#g1b",{
+	var g1 = new Eeg("#g1b",{
 		title:"shortest path test - acii dataset (data graph)",
 		groupingForce:{
      	   Article:{x:-5,y:0},
