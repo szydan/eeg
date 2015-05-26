@@ -25,9 +25,48 @@
 
 
 
+  var g21 = new Eeg('#g21' ,{
+    title: 'linkHtml element',
+    alwaysShowLinksLabels: true,
+    onLinkClick: function (THIS, d, i) {
+      console.log(THIS)
+    }
+  });
+  g21.addNodes(node1,node2);
+  g21.addLink({
+    source:node1,
+    target:node2,
+    linkType:"x",
+    htmlElement: $('<div>').html(
+      '<div style="border: 1px red solid;">' +
+        '<input type="checkbox" />' +
+        '<label>Click me</label>' +
+        '<img src="http://placehold.it/48x48">'+
+      '</div>').get(0),
+    htmlElementHeight: 80
+  });
+
+
+
+  var g20 = new Eeg('#g20' ,{
+    title: 'always show label',
+    alwaysShowLinksLabels: true,
+    onLinkClick: function (THIS, d, i) {
+      // turn on and off
+      var $el = $(THIS);
+      if($el.attr('stroke') === 'red') {
+        $el.attr('stroke', 'green').attr('fill', 'green')
+      } else {
+        $el.attr('stroke', 'red').attr('fill', 'red')
+      }
+    }
+  });
+  g20.addNodes(node1,node2);
+  g20.addLink({source:node1,target:node2,linkType:"always visible link"});
+
+
 
   var nodeS1 = {id:"Centre",label:"Centre",nodeType:"CentreNode"};
-
   var nodeS2 = {id:"Satelite2",label:"Satelite",nodeType:"SateliteNode"};
   var nodeS3 = {id:"Satelite3",label:"Satelite",nodeType:"SateliteNode"};
   var nodeS4 = {id:"Satelite4",label:"Satelite",nodeType:"SateliteNode"};
@@ -287,13 +326,15 @@
 
 
 
+  // TODO: there is a bug - after replacement the node size is wrong
+  // look at node C
   var g19 = new Eeg("#g19",{
     title:"replace nodes"
   });
 
   var node19_A =  {id:"a",label:"A",nodeType:"Person", size:80};
   var node19_B =  {id:"b",label:"B",nodeType:"Person", size:80};
-  var node19_C =  {id:"c",label:"C",nodeType:"Person", size:80};
+  var node19_C =  {id:"c",label:"C",nodeType:"Company", size:80};
   var node19_D =  {id:"d",label:"D",nodeType:"Person", size:20};
   var node19_E =  {id:"e",label:"E",nodeType:"Person", size:20};
 
@@ -363,6 +404,10 @@
 </head>
 <body>
   <h1>Eg tests</h1>
+
+  <div id="g21" class="example"></div>
+  <div id="g20" class="example"></div>
+
 
   <div id="g19" class="example"></div>
 
