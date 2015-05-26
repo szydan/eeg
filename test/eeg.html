@@ -29,6 +29,7 @@
     title: 'linkHtml element',
     alwaysShowLinksLabels: true,
     onLinkClick: function (THIS, d, i) {
+      alert('onLinkClick defined in options object')
       console.log(THIS)
     }
   });
@@ -43,7 +44,11 @@
         '<label>Click me</label>' +
         '<img src="http://placehold.it/48x48">'+
       '</div>').get(0),
-    htmlElementHeight: 80
+    htmlElementHeight: 80,
+    onLinkClick: function (THIS, d, i) {
+      alert('onLinkClick defined in link object')
+      console.log(THIS)
+    }
   });
 
 

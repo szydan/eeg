@@ -16,7 +16,7 @@ test( "shortest path test for schema graph for 'wkd' dataset", function() {
 	g0.addLink({source:documentNode,target:personNode,linkType:"creator"});
 	g0.addLink({source:documentNode,target:courtNode,linkType:"fromCourt"});
 
-	var helper = new EgHelper();
+	var helper = new EegHelper();
 
 	equal( helper.shortestPathInNumberOfEdges(g0, "Court0", "DoesNOTExist" ) , undefined , "Wrongly calulated path" );
 
@@ -54,7 +54,7 @@ test( "shortest path test for schema graph for 'acii' dataset", function() {
 	g1.addLink({source:investmentNode,target:investorNode,linkType:"hasInvestor"});
 
 
-	var helper = new EgHelper();
+	var helper = new EegHelper();
 
 	equal( helper.shortestPathInNumberOfEdges(g1, "Article0", "DoesNOTExist" ) , undefined , "Wrongly calulated path" );
 
@@ -118,7 +118,7 @@ test( "shortest path test for schema graph for 'okk' dataset", function() {
 
 	g2.addLink({source:comuneNode,target:provinciaNode ,linkType:"link"});
 
-	var helper = new EgHelper();
+	var helper = new EegHelper();
 
 	equal( helper.shortestPathInNumberOfEdges(g2, "UtenzaElettrica0", "DoesNOTExist" ) , undefined , "Wrongly calulated path" );
 	equal( helper.shortestPathInNumberOfEdges(g2, "UtenzaElettrica0", "UtenzaElettrica" ) , 0 , "Wrongly calulated path" );
@@ -165,7 +165,7 @@ test( "shortest path test for data graph for 'acii' dataset", function() {
 	g1.addLink({source:investmentNode,target:investorNode,linkType:"hasInvestor"});
 
 
-	var helper = new EgHelper();
+	var helper = new EegHelper();
 
 	equal( helper.shortestPathInNumberOfEdges(g1, "Article0", "DoesNOTExist" ) , undefined , "Wrongly calulated path" );
 
