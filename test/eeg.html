@@ -18,6 +18,7 @@
   <script type="text/javascript">
     $(document).ready(function(){
 
+
   var node1 = {id:"Article",label:"Article",nodeType:"Article"};
   var node2 = {id:"Company",label:"Company",nodeType:"Company"};
   var node3 = {id:"Investment",label:"Investment",nodeType:"Investmet"};
@@ -39,7 +40,7 @@
     target:node2,
     linkType:"x",
     htmlElement: $('<div>').html(
-      '<div style="border: 1px red solid;">' +
+      '<div style="border: 1px red solid; height:78px;">' +
         '<input type="checkbox" />' +
         '<label>Click me</label>' +
         '<img src="http://placehold.it/48x48">'+
@@ -50,7 +51,21 @@
       console.log(THIS)
     }
   });
-
+  g21.addLink({
+    source:node1,
+    target:node2,
+    linkType:"y",
+    htmlElement: $('<div>').html(
+      '<div style="border: 1px red solid; height: 20px;">' +
+        '<input type="checkbox" />' +
+        '<label>Click me</label>' +
+      '</div>').get(0),
+    htmlElementHeight: 22,
+    onLinkClick: function (THIS, d, i) {
+      alert('onLinkClick defined in link object')
+      console.log(THIS)
+    }
+  });
 
 
   var g20 = new Eeg('#g20' ,{
@@ -68,7 +83,6 @@
   });
   g20.addNodes(node1,node2);
   g20.addLink({source:node1,target:node2,linkType:"always visible link"});
-
 
 
   var nodeS1 = {id:"Centre",label:"Centre",nodeType:"CentreNode"};
