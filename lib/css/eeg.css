@@ -1,0 +1,52 @@
+/* GRAPH */
+
+.eeg .node {
+    stroke: #999;
+    stroke-width: 0.5px;
+    z-index: 3;
+    cursor: pointer;
+}
+
+.eeg .node circle{
+    opacity:1 !important;
+}
+
+.eeg .node.fixed {
+    fill: #f00;
+}
+
+
+.eeg .linkText{
+    font: 10px sans-serif;
+    cursor: pointer;
+}
+
+
+.eeg .link {
+    cursor: pointer;
+}
+
+.eeg .nodetext {
+    pointer-events: none;
+    font: 10px sans-serif;
+    color: black;
+}
+
+/* CONTEXT MENU */
+
+.eeg ul.list {
+    font-size: 12x;
+    position:absolute; left:12px; top:-12px; z-index:999;
+    margin:0; padding:2px; list-style:none;
+    background:#fff; color:#333;
+    -moz-border-radius:4px; -webkit-border-radius:4px; border-radius:4px;
+    -moz-box-shadow:0 0 4px #999; -webkit-box-shadow:0 0 4px #999; box-shadow:0 0 4px #999
+}
+.eeg ul.list li {
+    padding:2px;
+    border-bottom: solid 1px #ccc;
+}
+.eeg ul.list li:hover {
+    background:#EC6603; color:#fff;
+}
+.eeg ul.list li:last-child { border:none }

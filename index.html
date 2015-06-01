@@ -8,14 +8,36 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-  
+
 
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.js"></script>
 
     <link  href="lib/css/eeg.css" type="text/css" rel="stylesheet" />
     <script src="lib/js/eeg.js"   type="text/javascript" ></script>
-
+    <style type="text/css">
+    .snippet{
+      width:90%;
+      height:auto;
+      margin:16px auto;
+    }
+    .snippet div.desc{
+      width:400px;
+      padding:4px;
+      margin: 4px auto;
+    }
+    .snippet div.graph{
+      width:400px;
+      height: 300px;
+      border: 1px #dedede solid;
+      margin: 0 auto;
+      border-radius: 4px;
+    }
+    .snippet div.code{
+      width:400px;
+      margin: 4px auto;
+    }
+  </style>
 
   </head>
   <body>
@@ -67,6 +89,147 @@ g101.addNodes(n1);
 </div>
 
 
+<div class="snippet">
+  <div class="desc">
+    Simplest graph 2 nodes 1 edge.
+  </div>
+  <div class="graph" id="g102"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 2"};
+
+var g102 = new Eeg("#g102", {
+  title:"Single link"
+});
+g102.addNodes(n1, n2);
+g102.addLink({source: n1, target: n2, linkType: "refersTo"});
+</script>
+</div>
+
+
+<div class="snippet">
+  <div class="desc">
+    Two links in the same direction.
+  </div>
+  <div class="graph" id="g103"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 2"};
+
+var g103 = new Eeg("#g103", {
+  title:"2 links - same direction"
+});
+g103.addNodes(n1, n2);
+g103.addLink({source: n1, target: n2, linkType: "refersTo"});
+g103.addLink({source: n1, target: n2, linkType: "refersTo"});
+</script>
+</div>
+
+
+<div class="snippet">
+  <div class="desc">
+    Two links in the oposite direction.
+  </div>
+  <div class="graph" id="g104"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 2"};
+
+var g104 = new Eeg("#g104", {
+  title:"2 links - oposite direction"
+});
+g104.addNodes(n1, n2);
+g104.addLink({source: n1, target: n2, linkType: "refersTo"});
+g104.addLink({source: n2, target: n1, linkType: "refersTo"});
+</script>
+</div>
+
+
+<div class="snippet">
+  <div class="desc">
+    Three links in the same direction.
+  </div>
+  <div class="graph" id="g105"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 2"};
+
+var g105 = new Eeg("#g105", {
+  title:"3 links - same direction"
+});
+g105.addNodes(n1, n2);
+g105.addLink({source: n1, target: n2, linkType: "refersTo"});
+g105.addLink({source: n1, target: n2, linkType: "refersTo"});
+g105.addLink({source: n1, target: n2, linkType: "refersTo"});
+</script>
+</div>
+
+<div class="snippet">
+  <div class="desc">
+    Three links in different directions.
+  </div>
+  <div class="graph" id="g106"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 2"};
+
+var g106 = new Eeg("#g106", {
+  title:"3 links - different direction"
+});
+g106.addNodes(n1, n2);
+g106.addLink({source: n1, target: n2, linkType: "refersTo"});
+g106.addLink({source: n2, target: n1, linkType: "refersTo"});
+g106.addLink({source: n1, target: n2, linkType: "refersTo"});
+</script>
+</div>
+
+
+<div class="snippet">
+  <div class="desc">
+    Four links in same directions.
+  </div>
+  <div class="graph" id="g107"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 2"};
+
+var g107 = new Eeg("#g107", {
+  title:"4 links - same direction"
+});
+g107.addNodes(n1, n2);
+g107.addLink({source: n1, target: n2, linkType: "refersTo"});
+g107.addLink({source: n1, target: n2, linkType: "refersTo"});
+g107.addLink({source: n1, target: n2, linkType: "refersTo"});
+g107.addLink({source: n1, target: n2, linkType: "refersTo"});
+</script>
+</div>
+
+<div class="snippet">
+  <div class="desc">
+    Five links in different directions.
+  </div>
+  <div class="graph" id="g108"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 2"};
+
+var g108 = new Eeg("#g108", {
+  title:"5 links - same direction"
+});
+g108.addNodes(n1, n2);
+g108.addLink({source: n1, target: n2, linkType: "direction 1 -> 2"});
+g108.addLink({source: n1, target: n2, linkType: "direction 1 -> 2"});
+g108.addLink({source: n2, target: n1, linkType: "refersTo"});
+g108.addLink({source: n2, target: n1, linkType: "refersTo"});
+g108.addLink({source: n2, target: n1, linkType: "refersTo"});
+</script>
+</div>
+
+
+
+
+
+
 
 
 
@@ -92,7 +255,52 @@ g101.addNodes(n1);
 
     </section>
 
-  
+
+<script>
+  // init all examples
+  $(document).ready(function () {
+
+    $('.snippet').each(function () {
+
+      $(this).append(
+        '<div class="code">'+
+          '<pre class="html"/>' +
+          '<pre class="js"/>' +
+          '<button class="html">Show Html</button><button class="js">Show Js</button>' +
+        '</div>');
+
+      var jsText = $(this).find('script').text();
+      var id = jsText.match(/"#(g[0-9]+)"/)[1]
+      var html = '<div id="' + id + '"></div>';
+
+      var $preJs = $(this).find('pre.js').css('display', 'none').text(jsText.trim());
+      var $preHtml = $(this).find('pre.html').css('display', 'none').text(html);
+
+      $(this).find('button.html').click(function (e) {
+        e.preventDefault();
+        if($preHtml.is(':visible')){
+          $preHtml.hide()
+          $(this).text('Show Html')
+        } else {
+          $preHtml.show()
+          $(this).text('Hide Html')
+        }
+      })
+
+      $(this).find('button.js').click(function (e) {
+        if($preJs.is(':visible')){
+          $preJs.hide()
+          $(this).text('Show Js')
+        } else {
+          $preJs.show()
+          $(this).text('Hide Js')
+        }
+      })
+
+    })
+
+  })
+</script>
   </body>
 </html>
 
