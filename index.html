@@ -17,10 +17,12 @@
     <script src="lib/js/eeg.js"   type="text/javascript" ></script>
     <style type="text/css">
     .snippet{
-      width:90%;
+      width:400px;
       height:auto;
-      margin:16px auto;
+      float:left;
+      margin: 16px 0 0 8px;
     }
+
     .snippet div.desc{
       width:400px;
       padding:4px;
@@ -37,6 +39,10 @@
       width:400px;
       margin: 4px auto;
     }
+    .snippet div.code button{
+      margin-right: 8px;
+    }
+    
   </style>
 
   </head>
@@ -63,9 +69,11 @@
 
 <pre><code>
 $ git clone https://github.com/szydan/eeg.git
+$ cd eeg
+$ npm install
 </code></pre>
 
-<p>Library is in lib folder</p>
+<p>Library is in <b>./lib folder</b>. Examples are in <b>./test/eeg.html</b></p>
 
 
 <h3>
@@ -226,10 +234,125 @@ g108.addLink({source: n2, target: n1, linkType: "refersTo"});
 </div>
 
 
+<div class="snippet">
+  <div class="desc">
+    Self reference - single link.
+  </div>
+  <div class="graph" id="g109"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+
+var g109 = new Eeg("#g109", {
+  title: "Self reference - 1 link"
+});
+g109.addNodes(n1);
+g109.addLink({source: n1, target: n1, linkType: "self reference"});
+</script>
+</div>
+
+<div class="snippet">
+  <div class="desc">
+    Self reference - 2 links.
+  </div>
+  <div class="graph" id="g110"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+
+var g110 = new Eeg("#g110", {
+  title: "Self reference - 2 links"
+});
+g110.addNodes(n1);
+g110.addLink({source: n1, target: n1, linkType: "self reference"});
+g110.addLink({source: n1, target: n1, linkType: "self reference"});
+</script>
+</div>
+
+<div class="snippet">
+  <div class="desc">
+    Self reference - 3 links.
+  </div>
+  <div class="graph" id="g111"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+
+var g111 = new Eeg("#g111", {
+  title: "Self reference - 2 links"
+});
+g111.addNodes(n1);
+g111.addLink({source: n1, target: n1, linkType: "self reference"});
+g111.addLink({source: n1, target: n1, linkType: "self reference"});
+g111.addLink({source: n1, target: n1, linkType: "self reference"});
+</script>
+</div>
+
+
+<div class="snippet">
+  <div class="desc">
+    Star like strucure - all links out.
+  </div>
+  <div class="graph" id="g112"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type center"};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 1"};
+var n3 =  {id: "3", label: "Node 3", nodeType: "Type 1"};
+var n4 =  {id: "4", label: "Node 4", nodeType: "Type 1"};
+var n5 =  {id: "5", label: "Node 5", nodeType: "Type 1"};
+var n6 =  {id: "6", label: "Node 6", nodeType: "Type 1"};
+var n7 =  {id: "7", label: "Node 7", nodeType: "Type 1"};
+var n8 =  {id: "8", label: "Node 8", nodeType: "Type 1"};
+var n9 =  {id: "9", label: "Node 9", nodeType: "Type 1"};
+
+var g112 = new Eeg("#g112", {
+  title: "Star like strucure - all links out."
+});
+g112.addNodes(n1, n2, n3, n4, n5, n6, n7, n8, n9);
+g112.addLink({source: n1, target: n2, linkType: "star link out"});
+g112.addLink({source: n1, target: n3, linkType: "star link out"});
+g112.addLink({source: n1, target: n4, linkType: "star link out"});
+g112.addLink({source: n1, target: n5, linkType: "star link out"});
+g112.addLink({source: n1, target: n6, linkType: "star link out"});
+g112.addLink({source: n1, target: n7, linkType: "star link out"});
+g112.addLink({source: n1, target: n8, linkType: "star link out"});
+g112.addLink({source: n1, target: n9, linkType: "star link out"});
+</script>
+</div>
+
+<div class="snippet">
+  <div class="desc">
+    Star like strucure - all links in. In addition the new method "addLinks" was used.
+  </div>
+  <div class="graph" id="g113"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type center"};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 1"};
+var n3 =  {id: "3", label: "Node 3", nodeType: "Type 1"};
+var n4 =  {id: "4", label: "Node 4", nodeType: "Type 1"};
+var n5 =  {id: "5", label: "Node 5", nodeType: "Type 1"};
+var n6 =  {id: "6", label: "Node 6", nodeType: "Type 1"};
+var n7 =  {id: "7", label: "Node 7", nodeType: "Type 1"};
+var n8 =  {id: "8", label: "Node 8", nodeType: "Type 1"};
+var n9 =  {id: "9", label: "Node 9", nodeType: "Type 1"};
+
+var g113 = new Eeg("#g113", {
+  title: "Star like strucure - all links in."
+});
+g113.addNodes(n1, n2, n3, n4, n5, n6, n7, n8, n9);
+g113.addLinks(
+  {source: n2, target: n1, linkType: "star link in"},
+  {source: n3, target: n1, linkType: "star link in"},
+  {source: n4, target: n1, linkType: "star link in"},
+  {source: n5, target: n1, linkType: "star link in"},
+  {source: n6, target: n1, linkType: "star link in"},
+  {source: n7, target: n1, linkType: "star link in"},
+  {source: n8, target: n1, linkType: "star link in"},
+  {source: n9, target: n1, linkType: "star link in"}
+);
+</script>
+</div>
 
 
 
-
+<div style="clear:both;"></div>
 
 
 
