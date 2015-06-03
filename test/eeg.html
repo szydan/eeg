@@ -658,6 +658,49 @@ g116.addLinks(
 </script>
 </div>
 
+<!-- not in the demo yet -->
+<div class="snippet">
+  <div class="desc">
+    Add and remove nodes.
+  </div>
+  <div class="graph" id="g117"></div>
+<script>
+var g117 = new Eeg("#g117", {
+  title: "Add and remove the nodes"
+});
+
+var add = true;
+var remove = false;
+var i = 0;
+var j = 0;
+var n = 6;
+setInterval(function () {
+
+  if (add && i < n) {
+     g117.addNode({id:i, label: 'node '+ i, nodeType: 'type ' + i});
+     if (i>0) {
+      g117.addLink({source:i - 1, target: i})
+     }
+     i++;
+  } else if (add && i === n) {
+    add = false;
+    remove = true;
+    i = n - 1;
+  } else if (remove && i >= 0) {
+    g117.removeNode(i)
+    i--;
+  } else if (i === -1) {
+    add = true;
+    remove = false;
+    i = 0;
+  }
+
+}, 400);
+</script>
+</div>
+
+
+
 
 
 
