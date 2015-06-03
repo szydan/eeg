@@ -26,6 +26,7 @@
     .snippet div.desc{
       width:400px;
       padding:4px;
+      height: 3em;
       margin: 4px auto;
     }
     .snippet div.graph{
@@ -42,7 +43,7 @@
     .snippet div.code button{
       margin-right: 8px;
     }
-    
+
   </style>
 
   </head>
@@ -351,6 +352,78 @@ g113.addLinks(
 </div>
 
 
+<div class="snippet">
+  <div class="desc">
+    Different node sizes.
+  </div>
+  <div class="graph" id="g114"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1", size: 40};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 2", size: 60};
+var n3 =  {id: "3", label: "Node 3", nodeType: "Type 3", size: 15};
+
+var g114 = new Eeg("#g114", {
+  title: "Different node sizes"
+});
+g114.addNodes(n1, n2, n3);
+g114.addLinks(
+  {source: n1, target: n2, linkType: "link"},
+  {source: n2, target: n3, linkType: "link"},
+  {source: n3, target: n1, linkType: "link"}
+);
+</script>
+</div>
+
+<div class="snippet">
+  <div class="desc">
+    Different link sizes.
+  </div>
+  <div class="graph" id="g115"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 2"};
+var n3 =  {id: "3", label: "Node 3", nodeType: "Type 3"};
+
+var g115 = new Eeg("#g115", {
+  title: "Different link sizes"
+});
+g115.addNodes(n1, n2, n3);
+g115.addLinks(
+  {source: n1, target: n2, linkType: "link", size: 30},
+  {source: n2, target: n3, linkType: "link", size: 20},
+  {source: n3, target: n1, linkType: "link", size: 10}
+);
+</script>
+</div>
+
+
+<div class="snippet">
+  <div class="desc">
+    Nodes as icons.
+  </div>
+  <div class="graph" id="g116"></div>
+<script>
+var n1 =  {id: "1", label: "John", nodeType: "Person", size:30};
+var n2 =  {id: "2", label: "Galway City", nodeType: "Place", size:30};
+var n3 =  {id: "3", label: "Google Inc", nodeType: "Company", size:30};
+
+var g116 = new Eeg("#g116", {
+  title: "Nodes as icons",
+  nodeIcons:{
+    "Person":"person.png",
+    "Place":"place.png",
+    "Company":"organization.png"
+  },
+  minNodeSize: 30,
+});
+g116.addNodes(n1, n2, n3);
+g116.addLinks(
+  {source: n1, target: n2, linkType: "was born in"},
+  {source: n1, target: n3, linkType: "works for"},
+  {source: n3, target: n1, linkType: "hired"}
+);
+</script>
+</div>
 
 <div style="clear:both;"></div>
 
