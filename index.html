@@ -61,6 +61,9 @@
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Eeg - easy easy graph</h3>
 
 <p>Library to easily draw simple force directed graphs</p>
+<p><b>Warning!</b> At this stage this library is not a performance beast and 
+  with large number of nodes or graphs the CPU can go up through the roof</p>
+
 
 
 <h3>
@@ -422,6 +425,45 @@ g116.addLinks(
   {source: n1, target: n3, linkType: "works for"},
   {source: n3, target: n1, linkType: "hired"}
 );
+</script>
+</div>
+
+
+
+<div class="snippet">
+  <div class="desc">
+    Add and remove nodes.
+  </div>
+  <div class="graph" id="g117"></div>
+<script>
+var g117 = new Eeg("#g117", {
+  title: "Add and remove the nodes"
+});
+var add = true;
+var remove = false;
+var i = 0;
+var j = 0;
+var n = 6;
+setInterval(function () {
+  if (add && i < n) {
+     g117.addNode({id:i, label: 'node '+ i, nodeType: 'type ' + i});
+     if (i>0) {
+      g117.addLink({source:i - 1, target: i})
+     }
+     i++;
+  } else if (add && i === n) {
+    add = false;
+    remove = true;
+    i = n - 1;
+  } else if (remove && i >= 0) {
+    g117.removeNode(i)
+    i--;
+  } else if (i === -1) {
+    add = true;
+    remove = false;
+    i = 0;
+  }
+}, 500);
 </script>
 </div>
 
