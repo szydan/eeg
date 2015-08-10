@@ -268,44 +268,6 @@
 
 
 
-  var test8 =  {id:"ArticleId",label:"Article",nodeType:"Article",size:12};
-  var test9 =  {id:"CompanyId",label:"Company",nodeType:"Company",size:12};
-
-  var test8a =  {id:"ArticleIdA",label:"ArticleA",nodeType:"Article",size:12};
-  var test9a =  {id:"CompanyIdA",label:"CompanyA",nodeType:"Company",size:12};
-
-  var test10 = {id:"InvestorId",label:"Investor",nodeType:"Investor",size:12};
-  var test11 = {id:"InvestmentId",label:"Investment" ,nodeType:"Investment",size:12};
-
-  var gTest = new Eeg("#test",{
-    title:"add and then remove nodes"
-  });
-
-
-
-  gTest.addNodes(test8a,test9a,test8,test9,test10,test11);
-
-
-
-  gTest.addLink({source:test8,target:test9,linkType:"test"});
-  gTest.addLink({source:test9,target:test10,linkType:"test"});
-  gTest.addLink({source:test10,target:test11,linkType:"test"});
-
-  gTest.addLink({source:test8,target:test9a,linkType:"test"});
-  gTest.addLink({source:test8a,target:test9a,linkType:"test"});
-
-
-  gTest.removeNode("CompanyId");
-  gTest.removeNode("CompanyIdA");
-  /*
-  console.log( isThisNodeReachableFrom(gTest,"ArticleId","Investor") );
-  console.log( isThisNodeReachableFrom(gTest,"ArticleId","Company") );
-  console.log( isThisNodeReachableFrom(gTest,"ArticleId","Investment") );
-
-  console.log( isThisNodeReachableFrom(gTest,"ArticleId", ["Investor","Company"] ) );
-
-  console.log( isThisNodeReachableFrom(gTest,"CompanyIdA", ["Article,Company,Investor","Investment"] ) );
-  */
 
 
 });
@@ -658,7 +620,7 @@ g116.addLinks(
 </script>
 </div>
 
-<!-- not in the demo yet -->
+
 <div class="snippet">
   <div class="desc">
     Add and remove nodes.
@@ -701,6 +663,58 @@ setInterval(function () {
 
 
 
+<div class="snippet">
+  <div class="desc">
+    Nodes as icons CHECK.
+  </div>
+  <div class="graph" id="g118"></div>
+<script>
+var n1 =  {id: "article", label: "article", nodeType: "article", size: 30};
+var n2 =  {id: "company", label: "company", nodeType: "company", size: 30};
+var n3 =  {id: "investment", label: "investment", nodeType: "investment", size: 30};
+var n4 =  {id: "investor", label: "investor", nodeType: "investor", size: 30};
+
+var g118 = new Eeg("#g118", {
+  title: 'Check required relations',
+              //debug: true,
+              monitorContainerSize: true,
+              alwaysShowLinksLabels: true,
+              stopAfter: 2000,
+              groupingForce:{},
+              nodeIcons: {
+                article: "newspaper.png",
+                company: "organization.png",
+                investor: "person.png",
+                investment: "money.png"
+              },
+              "groupingForce": {
+   "article": {
+    "x": -2,
+    "y": -1
+   },
+   "company": {
+    "x": -1,
+    "y": 1
+   },
+   "investment": {
+    "x": 1,
+    "y": -1
+   },
+   "investor": {
+    "x": 2,
+    "y": 1
+   }
+  },
+              minNodeSize: 30
+});
+g118.addNodes(n1, n2, n3, n4);
+g118.addLinks(
+  {source: n1, target: n2, linkType: "was born in"},
+  {source: n2, target: n3, linkType: "works for"},
+  {source: n3, target: n4, linkType: "hired"}
+);
+</script>
+</div>
 
 
 
