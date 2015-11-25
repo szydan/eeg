@@ -311,6 +311,23 @@ g102.addLink({source: n1, target: n2, linkType: "refersTo"});
 </script>
 </div>
 
+<div class="snippet">
+  <div class="desc">
+    Simplest graph 2 nodes 1 edge.
+  </div>
+  <div class="graph" id="g102a"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 2"};
+
+var g102a = new Eeg("#g102a", {
+  title:"Single link"
+});
+g102a.addNodes(n1, n2);
+g102a.addLink({source: n1, target: n2, linkType: "refersTo", undirected: true});
+</script>
+</div>
+
 
 <div class="snippet">
   <div class="desc">
