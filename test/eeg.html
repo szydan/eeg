@@ -749,33 +749,35 @@ g118.addLinks(
           '</div>');
 
         var jsText = $(this).find('script').text();
-        var id = jsText.match(/"#(g[0-9]+)"/)[1]
-        var html = '<div id="' + id + '"></div>';
+        if (jsText) {
+          var id = jsText.match(/"#(g[0-9]+[a-z]?)"/)[1]
+          var html = '<div id="' + id + '"></div>';
 
-        var $preJs = $(this).find('pre.js').css('display', 'none').text(jsText.trim());
-        var $preHtml = $(this).find('pre.html').css('display', 'none').text(html);
+          var $preJs = $(this).find('pre.js').css('display', 'none').text(jsText.trim());
+          var $preHtml = $(this).find('pre.html').css('display', 'none').text(html);
 
-        $(this).find('button.html').click(function (e) {
-          e.preventDefault();
-          if($preHtml.is(':visible')){
-            $preHtml.hide()
-            $(this).text('Show Html')
-          } else {
-            $preHtml.show()
-            $(this).text('Hide Html')
-          }
-        })
+          $(this).find('button.html').click(function (e) {
+            e.preventDefault();
+            if($preHtml.is(':visible')){
+              $preHtml.hide()
+              $(this).text('Show Html')
+            } else {
+              $preHtml.show()
+              $(this).text('Hide Html')
+            }
+          })
 
-        $(this).find('button.js').click(function (e) {
-          if($preJs.is(':visible')){
-            $preJs.hide()
-            $(this).text('Show Js')
-          } else {
-            $preJs.show()
-            $(this).text('Hide Js')
-          }
-        })
+          $(this).find('button.js').click(function (e) {
+            if($preJs.is(':visible')){
+              $preJs.hide()
+              $(this).text('Show Js')
+            } else {
+              $preJs.show()
+              $(this).text('Hide Js')
+            }
+          })
 
+        }
       })
 
     })
@@ -791,45 +793,11 @@ g118.addLinks(
 
   <div id="g21" class="example"></div>
   <div id="g20" class="example"></div>
-
-
   <div id="g19" class="example"></div>
-
-
-  <div id="g18" class="example"></div>
-
-
   <div id="g17" class="example"></div>
-
-  <div id="g13" class="example"></div>
   <div id="g6" class="example"></div>
   <div id="g14" class="example"></div>
 
-
-  <div id="g15" class="example"></div>
-  <div id="g16" class="example"></div>
-
-
-  <div id="g12" class="example"></div>
-  <div id="g11" class="example"></div>
-
-
-
-
-  <div id="g0" class="example"></div>
-  <div id="g2" class="example"></div>
-  <div id="g3" class="example"></div>
-
-  <div id="g1" class="example"></div>
-  <div id="g8" class="example"></div>
-
-  <div id="g4" class="example"></div>
-  <div id="g5" class="example"></div>
-
-
-  <div id="test" class="example"></div>
-
-  <!-- resize demo -->
   <div id="g7" class="example" style="width:100%; clear:both;"></div>
 
   <div style="clear:both;"></div>
