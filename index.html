@@ -446,6 +446,28 @@ g116.addLinks(
 </script>
 </div>
 
+<div class="snippet">
+  <div class="desc">
+    Fixed colors.
+  </div>
+  <div class="graph" id="g400"></div>
+<script>
+var n1 =  {id: "1", label: "red",   nodeType: "Type 1"};
+var n2 =  {id: "2", label: "green", nodeType: "Type 2"};
+var n3 =  {id: "3", label: "blue",  nodeType: "Type 3"};
+
+var g400 = new Eeg("#g400", {
+  title:"Colors",
+  colors: {
+    'Type 1': '#f00',
+    'Type 2': '#0f0',
+    'Type 3': '#00f'
+  }
+});
+g400.addNodes(n1, n2, n3);
+</script>
+</div>
+
 
 
 <div class="snippet">
@@ -485,6 +507,30 @@ setInterval(function () {
 </script>
 </div>
 
+
+
+<div class="snippet">
+  <div class="desc">
+    Copy the graph you want into this box.
+  </div>
+  <div class="graph" id="g_clone"></div>
+  <select id="toClone"></select>
+  <button id="clone">clone</button>
+<script>
+$("#clone").click(function (e) {
+  $("#g_clone").empty();
+  var sourceGraphId = $('#toClone').val();
+  var targetGraph = new Eeg("#g_clone", {
+    title: "Cloned of graph: " + sourceGraphId
+  });
+  var sourceGraph = window[sourceGraphId];
+  targetGraph.importGraph(sourceGraph.exportGraph())
+});
+</script>
+</div>
+
+
+
 <div style="clear:both;"></div>
 
 
@@ -516,6 +562,8 @@ setInterval(function () {
   // init all examples
   $(document).ready(function () {
 
+
+    var ids = [];
     $('.snippet').each(function () {
 
       $(this).append(
@@ -526,7 +574,11 @@ setInterval(function () {
         '</div>');
 
       var jsText = $(this).find('script').text();
-      var id = jsText.match(/"#(g[0-9a-z]+)"/)[1]
+      var id = jsText.match(/"#(g[0-9a-z_]+)"/)[1]
+      
+      if(id !== 'g_clone') {
+        ids.push(id);
+      }
       var html = '<div id="' + id + '"></div>';
 
       var $preJs = $(this).find('pre.js').css('display', 'none').text(jsText.trim());
@@ -553,9 +605,13 @@ setInterval(function () {
         }
       })
 
-    })
+    });
 
-  })
+    for (var i=0; i< ids.length; i++) {
+      $('#toClone').append('<option>' + ids[i] + '</option>')
+    }
+
+  });
 </script>
   </body>
 </html>
