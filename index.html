@@ -71,14 +71,130 @@
 
 <p>To install:</p>
 
-<pre><code>
+<pre>
 $ git clone https://github.com/szydan/eeg.git
 $ cd eeg
 $ npm install
-</code></pre>
+</pre>
 
-<p>Library is in <b>./lib folder</b>. Examples are in <b>./test/eeg.html</b></p>
+<p>Library is in <b>./lib</b>. Examples are in <b>./test/eeg.html</b></p>
 
+
+<h3>
+<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage and API</h3>
+
+<pre class="js"/>
+Usage:
+
+var eeg = new Eeg('#id', options);
+
+Where options:
+
+{
+  title: "My graph",                // ( optional ) default ""
+  showLegend: true/false            // ( optional ) default true
+  baseURL: ''                       // ( optional ) default "" - baseUrl for resources (img,css,js)
+  debug: true,                      // ( optional ) default false
+  forceDistance: 100,               // ( optional ) default 200
+  forceGravity: 0.5,                // ( optional ) default 0.01
+  groupingForce:{                   // ( optional ) default - no additional force will be applied in any direction
+    nodeType1: {x: +8, y: +3},
+    nodeType1: {x: -8, y: -3}
+  }
+  minNodeSize: 10,                  // ( optional ) default 10
+  maxNodeSize: 30,                  // ( optional ) default 30
+  monitorContainerSize: true/false, // ( optional ) default false
+  nodeR: 10,                        // ( optional ) default 10
+  colors: {                         // ( optional ) if not present the d3.scale.category10() function is used to assign colors to nodes
+    nodeType1: "#ff0",
+    nodeType2: "#0f0"
+  },
+  nodeIcons: {                            // ( optional ) if not present the nodes are shown as colored circles
+    nodeType1: {                          // if present the nodes will be presented as the provided images, scale according to the node.size property
+      img: "http://placehold.it/48x48",   // all images size has to be exactly 48px x 48px
+      type:"round|square"                 // there are built in ones with urls "person", "place", "organization"
+    },
+    nodeType1: {
+      img: "http://placehold.it/48x48",
+      type:"round|square"
+    }
+  },
+
+
+  linkColor: '#dedede',             // ( optional ) default: '#dedede' - color of the graph edge
+  linkHoverColor : '#444',          // ( optional ) default: '#444'    - color of the graph edge on hover
+  alwaysShowLinksLabels : false,    // ( optional ) default: false     - flag to indicate that links labels should be shown all time, not only on hover
+
+  // if any of the callbacks is provided, some default actions might get broken
+  // Please check the source to see what default callbacks are doing, before providing your custom ones
+  onNodeUnsticky:   function(){},
+  onNodeSticky:     function(){},
+  onNodeDragEnd:    function(){},
+  onNodeMouseOver:  function(){},
+  onNodeMouseOut:   function(){},
+  onNodeClick:      function(self,d,i){},
+  onNodeDoubleClick:function(){},
+  onNodeRemove:     function(self,clickedNode, node, i){},
+  onNodeExpand:     function(self,THIS,d,i,clickedEl){  $(clickedEl).closest("div").fadeOut(); },
+  onNodeCollapse:   function(self,THIS,d,i,clickedEl){},
+
+  onLinkMouseOver:  function(){},
+  onLinkMouseOut:   function(){},
+  onLinkClick:      function(){},
+}
+
+To add nodes and edges to the graph use:
+
+eeg.addNode(node)
+eeg.addLink(link)
+
+Where:
+node = {
+  id:string,      // mandatory
+  label:string,   // mandatory
+  nodeType:string,// mandatory
+  size: integer   // optional - when present all nodes will have normalized sizes where min,max  ->  options.minNodeSize, options.maxNodeSize
+}
+
+link = {
+  source:node,        // mandatory
+  target:node,        // mandatory
+  linkType:string,    // mandatory
+  undirected: boolean // optional - default false, when true no arrow is draw
+  html: htmlElement,  // optional
+  size: integer       // optional - when present all links will have normalized thickness where  min,max -> options.minLinkSize, options.maxLinkSize
+  onLinkClick: function(){} // optional if present will take preference over the one from options
+                            // and will be attached only to this particular link
+}
+
+Other methods:
+
+eeg.getOptions()
+eeg.setTitle(title)
+
+eeg.addNodes(nodes)
+eeg.replaceNodes(nodes)
+eeg.removeNodes(ids)
+eeg.removeNode(id)
+eeg.getNode(id)
+eeg.getNodes()
+
+eeg.addLinks(links)
+eeg.replaceLinks(links)
+eeg.removeLinks(ids)
+eeg.removeLink(id)
+eeg.getLink(id)
+eeg.getLinks()
+
+eeg.exportGraph()
+eeg.importGraph(exportedGraph)
+
+eeg.start()
+eeg.stop()
+eeg.silentlyAddNode(node)
+eeg.silentlyAddLink(link)
+eeg.update()
+</pre>
 
 <h3>
 <a id="rather-drive-stick" class="anchor" href="#rather-drive-stick" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h3>
