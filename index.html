@@ -24,20 +24,20 @@
     }
 
     .snippet div.desc{
-      width:400px;
-      padding:4px;
+      width: 100%;
+      padding: 4px;
       height: 3em;
       margin: 4px auto;
     }
     .snippet div.graph{
-      width:400px;
+      width: 100%;
       height: 300px;
       border: 1px #dedede solid;
       margin: 0 auto;
       border-radius: 4px;
     }
     .snippet div.code{
-      width:400px;
+      width: 100%;
       margin: 4px auto;
     }
     .snippet div.code button{
@@ -61,7 +61,7 @@
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Eeg - easy easy graph</h3>
 
 <p>Library to easily draw simple force directed graphs</p>
-<p><b>Warning!</b> At this stage this library is not a performance beast and 
+<p><b>Warning!</b> At this stage this library is not a performance beast and
   with large number of nodes or graphs the CPU can go up through the roof</p>
 
 
@@ -531,6 +531,66 @@ $("#clone").click(function (e) {
 
 
 
+
+<div class="snippet" style="width:100%;">
+  <div class="desc">
+    Dynamic scaling with the container on window resize.
+  </div>
+  <div class="graph" id="g118"></div>
+<script>
+var n1 =  {id: "1", label: "red",   nodeType: "Type 1"};
+var n2 =  {id: "2", label: "green", nodeType: "Type 2"};
+var n3 =  {id: "3", label: "blue",  nodeType: "Type 3"};
+var g118 = new Eeg("#g118",{
+  title:"dynamic scaling to container size, resize window to verify"
+});
+g118.addNodes(n1, n2, n3);
+g118.addLink({source: n1, target: n2, linkType: "refersTo"});
+g118.addLink({source: n2, target: n3, linkType: "refersTo"});
+</script>
+</div>
+
+
+<div class="snippet" style="width:100%;">
+  <div class="desc">
+    Dynamic scaling with the container (actively monitor container size).
+  </div>
+  <div class="graph" id="g119" style="margin: 0;"></div>
+<script>
+var n1 =  {id: "1", label: "red",   nodeType: "Type 1"};
+var n2 =  {id: "2", label: "green", nodeType: "Type 2"};
+var n3 =  {id: "3", label: "blue",  nodeType: "Type 3"};
+var g119 = new Eeg("#g119",{
+  title:"dynamic scaling to container size, resize window to verify",
+  monitorContainerSize: true
+});
+g119.addNodes(n1, n2, n3);
+g119.addLink({source: n1, target: n2, linkType: "refersTo"});
+g119.addLink({source: n2, target: n3, linkType: "refersTo"});
+
+var loop = function(id,minW,minH,maxW,maxH){
+  $(id).animate({width:minW,height:minH},1000,function(){
+    //wait a 2 sec
+    setTimeout(function(){
+      $(id).animate({width: maxW, height: maxH}, 1000, function () {
+        // wait a 2 sec
+        setTimeout(function () {
+          loop(id, minW, minH, maxW, maxH);
+        },2000);
+      });
+    },2000);
+  })
+}
+
+loop("#g119", 200, 200, $("#g119").width(), $("#g119").height() );
+</script>
+</div>
+
+
+
+
+
+
 <div style="clear:both;"></div>
 
 
@@ -575,7 +635,7 @@ $("#clone").click(function (e) {
 
       var jsText = $(this).find('script').text();
       var id = jsText.match(/"#(g[0-9a-z_]+)"/)[1]
-      
+
       if(id !== 'g_clone') {
         ids.push(id);
       }
