@@ -636,11 +636,11 @@ setInterval(function () {
 $("#clone").click(function (e) {
   $("#g_clone").empty();
   var sourceGraphId = $('#toClone').val();
-  var targetGraph = new Eeg("#g_clone", {
-    title: "Cloned of graph: " + sourceGraphId
-  });
   var sourceGraph = window[sourceGraphId];
-  targetGraph.importGraph(sourceGraph.exportGraph())
+  
+  var targetGraph = new Eeg("#g_clone");
+  targetGraph.importGraph(sourceGraph.exportGraph());
+  targetGraph.setTitle('clonned [' + sourceGraph.getOptions().title + ']');
 });
 </script>
 </div>
