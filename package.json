@@ -1,6 +1,6 @@
 {
   "name": "eeg",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "easy easy graph",
   "main": "lib/js/eeg.js",
   "scripts": {
@@ -24,11 +24,11 @@
   "homepage": "https://github.com/szydan/eeg",
   "dependencies": {
     "jquery": "1.11.3",
-    "d3": "3.5.5"
+    "d3": "3.5.6"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-jshint": "0.12.0",
     "grunt-jscs": "git://github.com/spalger/grunt-jscs.git#addFix"
   }
 }
