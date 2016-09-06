@@ -44,8 +44,8 @@
     $(document).ready(function(){
 
 
-  var node1 = {id:"Article",label:"Article",nodeType:"Article"};
-  var node2 = {id:"Company",label:"Company",nodeType:"Company"};
+  var node1 = {id:"Article",label:"Article",nodeType:"Article", size: 30};
+  var node2 = {id:"Company",label:"Company",nodeType:"Company", size: 20};
   var node3 = {id:"Investment",label:"Investment",nodeType:"Investmet"};
   var node4 = {id:"Investor",label:"Investor",nodeType:"Investor"};
 
@@ -54,6 +54,7 @@
   var g21 = new Eeg('#g21' ,{
     title: 'linkHtml element',
     alwaysShowLinksLabels: true,
+    layersOrder: ['nodes', 'legend', 'links','linksLabelsBack','linksLabels'],
     onLinkClick: function (THIS, d, i) {
       alert('onLinkClick defined in options object')
       console.log(THIS)
