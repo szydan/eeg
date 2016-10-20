@@ -1,6 +1,6 @@
 {
   "name": "eeg",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "description": "easy easy graph",
   "main": "lib/js/eeg.js",
   "scripts": {
