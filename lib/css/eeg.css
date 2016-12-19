@@ -1,4 +1,7 @@
 /* GRAPH */
+.eeg {
+  position: relative;
+}
 
 .eeg .node {
     stroke: #999;
