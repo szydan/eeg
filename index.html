@@ -237,6 +237,59 @@ g102a.addLink({source: n1, target: n2, linkType: "refersTo", undirected: true});
 
 <div class="snippet">
   <div class="desc">
+    Labels with checkboxes.
+  </div>
+  <div class="graph" id="g300"></div>
+<script>
+var n1 =  {id: "1", label: "Node 1", nodeType: "Type 1"};
+var n2 =  {id: "2", label: "Node 2", nodeType: "Type 2"};
+
+var g300 = new Eeg("#g300", {
+  title:"Labels with checkboxes",
+  alwaysShowLinksLabels: true,
+  layersOrder: ['nodes', 'legend', 'links','linksLabelsBack','linksLabels'],
+  onLinkClick: function (THIS, d, i) {
+    alert('onLinkClick defined in options object')
+  }
+});
+g300.addNodes(n1, n2);
+g300.addLink({
+  source: n1,
+  target: n2,
+  linkType:"x",
+  htmlElement: $('<div>').html(
+    '<div style="border: 1px red solid; height:78px;">' +
+      '<input type="checkbox" />' +
+      '<label>Click me</label>' +
+      '<img src="http://placehold.it/48x48">'+
+    '</div>').get(0),
+  htmlElementHeight: 80,
+  onLinkClick: function (THIS, d, i) {
+    alert('onLinkClick defined in link object')
+    console.log(THIS);
+  }
+});
+g300.addLink({
+  source: n1,
+  target: n2,
+  linkType:"y",
+  htmlElement: $('<div>').html(
+    '<div style="border: 1px red solid; height: 20px;">' +
+      '<input type="checkbox" />' +
+      '<label>Click me</label>' +
+    '</div>').get(0),
+  htmlElementHeight: 22,
+  onLinkClick: function (THIS, d, i) {
+    alert('onLinkClick defined in link object');
+    console.log(THIS);
+  }
+});
+</script>
+</div>
+
+
+<div class="snippet">
+  <div class="desc">
     Simplest graph 2 nodes 1 edge.
   </div>
   <div class="graph" id="g102"></div>
